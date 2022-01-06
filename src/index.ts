@@ -2,7 +2,12 @@ import { exec } from 'pkg';
 import rcedit from 'rcedit';
 import { Options } from './Options';
 
-async function exe(options: Options) {
+/**
+ * Build an executable
+ * @param {Options} options
+ * @returns An empty promise
+ */
+async function exe(options: Options): Promise<void> {
     const args = [options.entry, ...options.pkg, '-t', options.target, '-o', options.out];
 
     // Build w/ PKG
