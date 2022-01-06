@@ -40,7 +40,7 @@ const build = exe({
         FileDescription: 'My Cool App',
         ProductName: 'My Cool App',
         LegalCopyright: 'AngaBlue https://anga.blue',
-        OriginalFilename: `My Cool App.exe`
+        OriginalFilename: 'My Cool App.exe'
     }
 });
 
