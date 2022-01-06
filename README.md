@@ -7,6 +7,7 @@
     <img alt="License: LGPL--3.0--or--later" src="https://img.shields.io/github/license/AngaBlue/exe?color=green" />
   </a>
 </p>
+
 Build a portable binary for Windows systems using Vercel's [pkg](https://www.npmjs.com/package/pkg).  As [pkg](https://www.npmjs.com/package/pkg) doesn't support modifying executable properties, this project serves to and aid in automating modifying the executable properties post build.
 
 ### 🏠 [Homepage](https://github.com/AngaBlue/exe)
