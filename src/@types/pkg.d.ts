@@ -1,4 +1,5 @@
 declare module 'pkg' {
-    function pkg(args: string[]): void;
-    export default pkg;
+    function exec(args: string[]): Promise<void>;
+    // eslint-disable-next-line import/prefer-default-export
+    export { exec };
 }
