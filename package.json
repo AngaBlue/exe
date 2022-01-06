@@ -1,0 +1,36 @@
+{
+  "name": "@angablue/exe",
+  "version": "1.0.0",
+  "description": "Build a portable binary for Windows systems using Vercel's pkg",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . --ext js,jsx,ts,tsx --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngaBlue/exe.git"
+  },
+  "keywords": [
+    "exe",
+    "windows",
+    "build",
+    "binary"
+  ],
+  "author": "AngaBlue <contact@anga.blue>",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/AngaBlue/exe/issues"
+  },
+  "homepage": "https://github.com/AngaBlue/exe#readme",
+  "devDependencies": {
+    "@angablue/eslint-config": "^1.1.2",
+    "eslint": "^8.6.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "pkg": "^5.5.1",
+    "rcedit": "^3.0.1"
+  }
+}

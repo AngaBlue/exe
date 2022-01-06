@@ -1,0 +1,27 @@
+name: Node.js Package
+
+on:
+  create:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: deployment
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 17
+      - run: npm install
+      - run: npm run build
+      - run: npm config set registry https://npm.pkg.github.com
+      - run: npm set //npm.pkg.github.com/:_authToken ${{secrets.GITHUB_TOKEN}}
+      - run: npm publish
+      - run: npm config set registry https://registry.npmjs.org
+      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - run: npm publish --access public
