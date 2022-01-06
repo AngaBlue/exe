@@ -1,4 +1,4 @@
-import pkg from 'pkg';
+import { exec } from 'pkg';
 import rcedit from 'rcedit';
 import { Options } from './Options';
 
@@ -6,17 +6,17 @@ async function exe(options: Options) {
     const args = [options.entry, ...options.pkg, '-t', options.target, '-o', options.out];
 
     // Build w/ PKG
-    pkg(args);
+    await exec(args);
 
     // Modify EXE w/ RCEdit
-    await rcedit(options.out, {
+    rcedit(options.out, {
         'application-manifest': options.manifest,
         'file-version': options.fileVersion,
         'product-version': options.productVersion,
         'requested-execution-level': options.executionLevel,
-        'version-string': options.version,
+        'version-string': options.properties,
         icon: options.icon
     });
 }
 
-export default exe;
+export = exe;

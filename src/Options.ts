@@ -10,7 +10,7 @@ export interface Options {
     /** The pkg argument string. */
     pkg: string[];
     /** The metadata within a version-information resource. */
-    version?: VersionStringOptions;
+    properties?: VersionStringOptions;
     /**
      * See [MSDN](https://docs.microsoft.com/en-us/windows/win32/msi/version) for the version format.
      */
