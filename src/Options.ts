@@ -1,4 +1,9 @@
-import { RequestedExecutionLevel, VersionStringOptions } from 'rcedit';
+interface Properties {
+    FileDescription: string;
+    ProductName: string;
+    CompanyName: string;
+    LegalCopyright: string;
+}
 
 export interface Options {
     /** The entry file. */
@@ -10,25 +15,14 @@ export interface Options {
     /** The pkg argument string. */
     pkg: string[];
     /** The metadata within a version-information resource. */
-    properties?: VersionStringOptions;
+    properties?: Properties;
     /**
      * See [MSDN](https://docs.microsoft.com/en-us/windows/win32/msi/version) for the version format.
      */
-    fileVersion?: string;
-    /**
-     * See [MSDN](https://docs.microsoft.com/en-us/windows/win32/msi/version) for the version format.
-     */
-    productVersion?: string;
+    version?: string;
     /**
      * Absolute path to the [ICO-formatted icon](https://en.wikipedia.org/wiki/ICO_(file_format))
      * to set as the application's icon.
      */
     icon?: string;
-    /** See [MSDN](https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/deployment/trustinfo-element-clickonce-application?view=vs-2015#requestedexecutionlevel) for details. */
-    executionLevel: RequestedExecutionLevel;
-    /**
-     * The path to the [application manifest](https://docs.microsoft.com/en-us/windows/win32/sbscs/application-manifests)
-     * XML that is to be embedded in the EXE.
-     */
-    manifest: string;
 }
