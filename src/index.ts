@@ -27,7 +27,7 @@ async function exe(options: Options): Promise<void> {
 
     // Product Version
     if (options.version) {
-        const version = `${options.version}.0`.split('.').map(parseInt);
+        const version = `${options.version}.0`.split('.').map(v => Number(v) ?? 0);
         vi.setProductVersion(version[0], version[1], version[2], version[3], 1033);
         vi.setFileVersion(version[0], version[1], version[2], version[3], 1033);
     }
