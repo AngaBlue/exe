@@ -51,5 +51,5 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2021 [AngaBlue](https://github.com/AngaBlue).<br />
+Copyright © [AngaBlue](https://github.com/AngaBlue).<br />
 This project is [LGPL--3.0--or--later](https://github.com/AngaBlue/exe/blob/master/LICENSE) licensed.
