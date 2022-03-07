@@ -14,13 +14,13 @@ Build a portable binary for Windows systems using Vercel's [pkg](https://www.npm
 
 ## Install
 
-Install this package using your package manager of choice.
+Install this package and save to `devDependencies` using your package manager of choice.
 ```sh
- npm i @angablue/exe
+ npm i -D @angablue/exe
 ```
 or
 ```sh
- yarn add @angablue/exe
+ yarn add -D @angablue/exe
 ```
 ## Basic Usage
 ```js
