@@ -8,12 +8,12 @@ interface Properties {
 export interface Options {
     /** The entry file. */
     entry: string;
-    /** The pkg build target */
-    target: string;
     /** The output file. */
     out: string;
     /** The pkg argument string. */
-    pkg: string[];
+    pkg?: string[];
+    /** The pkg build target */
+    target?: string;
     /** The metadata within a version-information resource. */
     properties?: Properties;
     /**

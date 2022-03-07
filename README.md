@@ -22,8 +22,21 @@ or
 ```sh
  yarn add @angablue/exe
 ```
+## Basic Usage
+```js
+// build.js
+const exe = require('@angablue/exe');
+
+const build = exe({
+    entry: './index.js',
+    out: './build/My Cool App.exe',
+});
+
+build.then(() => console.log('Build completed!'));
+```
 
 ## Example Usage
+Specify more arguments and completely customise the resultant executable.
 ```js
 // build.js
 const exe = require('@angablue/exe');

@@ -10,7 +10,7 @@ import { Options } from './Options';
  * @returns An empty promise
  */
 async function exe(options: Options): Promise<void> {
-    const args = [options.entry, ...options.pkg, '-t', options.target, '-o', options.out];
+    const args = [options.entry, ...(options.pkg ?? []), '-t', options.target ?? 'latest-win-x64', '-o', options.out];
 
     // Build w/ PKG
     await exec(args);
