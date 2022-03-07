@@ -32,8 +32,7 @@ const build = exe({
     entry: './index.js',
     out: './build/My Cool App.exe',
     pkg: ['-C', 'GZip'], // Specify extra pkg arguments
-    productVersion: '2.4.2',
-    fileVersion: '2.4.2',
+    version: '2.4.2',
     target: 'latest-win-x64',
     icon: './assets/icon.ico', // Application icons must be in .ico format
     properties: {
