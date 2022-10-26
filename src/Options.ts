@@ -19,7 +19,7 @@ export interface Options {
     /**
      * See [MSDN](https://docs.microsoft.com/en-us/windows/win32/msi/version) for the version format.
      */
-    version?: string;
+    version?: `${number}.${number}.${number}`;
     /**
      * Absolute path to the [ICO-formatted icon](https://en.wikipedia.org/wiki/ICO_(file_format))
      * to set as the application's icon.
