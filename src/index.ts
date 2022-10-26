@@ -33,15 +33,15 @@ async function exe(options: Options): Promise<void> {
 
     // Product version
     if (options.version) {
-        // Convert version to tuple of 4 numbers
-        const version = `${options.version}.0`
+        // Convert version to tuple of 3 numbers
+        const version = options.version
             .split('.')
-            .map(v => Number(v) ?? 0)
-            .slice(0, 4) as [number, number, number, number];
+            .map(v => Number(v) || 0)
+            .slice(0, 3) as [number, number, number];
 
         // Update versions
-        vi.setProductVersion(...version, language.lang);
-        vi.setFileVersion(...version, language.lang);
+        vi.setProductVersion(...version, 0, language.lang);
+        vi.setFileVersion(...version, 0, language.lang);
     }
 
     // Add additional user specified properties
