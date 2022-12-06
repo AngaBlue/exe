@@ -16,7 +16,7 @@ const language = {
  * @returns An empty promise which is resolved when the executable is built
  */
 async function exe(options: Options): Promise<void> {
-    const args = [options.entry, ...(options.pkg ?? []), '-t', options.target ?? 'latest-win-x64', '-o', options.out];
+    const args = [options.entry, ...(options.pkg || []), '-t', options.target || 'latest-win-x64', '-o', options.out];
 
     // Build w/ PKG
     await exec(args);
