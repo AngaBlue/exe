@@ -1,6 +1,6 @@
 {
   "name": "@angablue/exe",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "Build a portable binary for Windows systems using Vercel's pkg",
   "main": "dist/index.js",
   "scripts": {
@@ -25,13 +25,13 @@
   "homepage": "https://github.com/AngaBlue/exe#readme",
   "devDependencies": {
     "@angablue/eslint-config": "^1.4.3",
-    "@types/node": "^18.11.11",
-    "eslint": "^8.29.0",
-    "prettier": "^2.8.0",
-    "typescript": "^4.9.3"
+    "@types/node": "^18.11.18",
+    "eslint": "^8.31.0",
+    "prettier": "^2.8.2",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "pkg": "^5.8.0",
-    "resedit": "^1.6.0"
+    "resedit": "^1.6.1"
   }
 }
