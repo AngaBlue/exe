@@ -25,13 +25,13 @@
   "homepage": "https://github.com/AngaBlue/exe#readme",
   "devDependencies": {
     "@angablue/eslint-config": "^1.4.3",
-    "@types/node": "^18.11.18",
-    "eslint": "^8.31.0",
-    "prettier": "^2.8.2",
-    "typescript": "^4.9.4"
+    "@types/node": "^20.4.5",
+    "eslint": "^8.46.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "pkg": "^5.8.0",
-    "resedit": "^1.6.1"
+    "pkg": "^5.8.1",
+    "resedit": "^2.0.0"
   }
 }

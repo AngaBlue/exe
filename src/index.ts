@@ -1,5 +1,5 @@
 import { exec } from 'pkg';
-import * as ResEdit from 'resedit';
+import { type ResEdit, load } from 'resedit/cjs';
 import { readFileSync, writeFileSync } from 'fs';
 import { VersionStringValues } from 'resedit/dist/resource';
 import { Options } from './Options';
@@ -16,6 +16,7 @@ const language = {
  * @returns An empty promise which is resolved when the executable is built
  */
 async function exe(options: Options): Promise<void> {
+    const RE: typeof ResEdit = await load();
     const args = [options.entry, ...(options.pkg || []), '-t', options.target || 'latest-win-x64', '-o', options.out];
 
     // Build w/ PKG
@@ -23,9 +24,9 @@ async function exe(options: Options): Promise<void> {
 
     // Modify .exe w/ ResEdit
     const data = readFileSync(options.out);
-    const executable = ResEdit.NtExecutable.from(data);
-    const res = ResEdit.NtExecutableResource.from(executable);
-    const vi = ResEdit.Resource.VersionInfo.fromEntries(res.entries)[0];
+    const executable = RE.NtExecutable.from(data);
+    const res = RE.NtExecutableResource.from(executable);
+    const vi = RE.Resource.VersionInfo.fromEntries(res.entries)[0];
 
     // Remove original filename
     vi.removeStringValue(language, 'OriginalFilename');
@@ -53,8 +54,8 @@ async function exe(options: Options): Promise<void> {
 
     // Add icon
     if (options.icon) {
-        const iconFile = ResEdit.Data.IconFile.from(readFileSync(options.icon));
-        ResEdit.Resource.IconGroupEntry.replaceIconsForResource(
+        const iconFile = RE.Data.IconFile.from(readFileSync(options.icon));
+        RE.Resource.IconGroupEntry.replaceIconsForResource(
             res.entries,
             1,
             language.lang,
