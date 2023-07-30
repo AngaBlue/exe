@@ -1,12 +1,13 @@
+import { join } from 'path';
 import exe from '../src';
 
 const build = exe({
-    entry: './test/index.js',
-    out: './test/My Cool App.exe',
+    entry: join(__dirname, 'index.js'),
+    out: join(__dirname, 'My Cool App.exe'),
     pkg: ['-C', 'GZip'], // Specify extra pkg arguments
     version: '2.4.2',
     target: 'latest-win-x64',
-    icon: './test/icon.ico', // Application icons must be in .ico format
+    icon: join(__dirname, 'icon.ico'), // Application icons must be in .ico format
     properties: {
         FileDescription: 'My Cool App',
         ProductName: 'My Cool App',

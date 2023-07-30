@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "pnpm run clean && tsc",
+    "test": "ts-node ./test/build.ts",
     "lint": "eslint . --ext js,jsx,ts,tsx --fix"
   },
   "repository": {
@@ -30,6 +31,7 @@
     "eslint": "^8.46.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
