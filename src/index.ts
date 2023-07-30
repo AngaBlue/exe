@@ -2,7 +2,7 @@ import { exec } from 'pkg';
 import { type ResEdit, load } from 'resedit/cjs';
 import { readFileSync, writeFileSync } from 'fs';
 import { VersionStringValues } from 'resedit/dist/resource';
-import { Options } from './Options';
+import type { Options } from './Options';
 
 // Language code for en-us and encoding codepage for UTF-16
 const language = {
