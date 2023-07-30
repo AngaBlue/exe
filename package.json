@@ -4,7 +4,8 @@
   "description": "Build a portable binary for Windows systems using Vercel's pkg",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "clean": "rimraf dist",
+    "build": "pnpm run clean && tsc",
     "lint": "eslint . --ext js,jsx,ts,tsx --fix"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "@types/node": "^20.4.5",
     "eslint": "^8.46.0",
     "prettier": "^3.0.0",
+    "rimraf": "^5.0.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
