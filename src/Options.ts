@@ -1,7 +1,7 @@
 interface Properties {
     FileDescription: string;
     ProductName: string;
-    CompanyName: string;
+    OriginalFilename: string;
     LegalCopyright: string;
 }
 
