@@ -1,6 +1,6 @@
+import { readFileSync, writeFileSync } from 'fs';
 import { exec } from 'pkg';
 import { type ResEdit, load } from 'resedit/cjs';
-import { readFileSync, writeFileSync } from 'fs';
 import { VersionStringValues } from 'resedit/dist/resource';
 import type { Options } from './Options';
 
