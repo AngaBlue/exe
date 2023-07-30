@@ -3,6 +3,7 @@
       "target": "ES6",
       "module": "CommonJS",
       "moduleResolution": "Node",
+      "declaration": true,
       "resolveJsonModule": true,
       "outDir": "./dist",
       "newLine": "lf",
@@ -10,9 +11,8 @@
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
       "strict": true,
-      "typeRoots": [
-          "node_modules/@types",
-          "src/@types"
-      ],
-  }
+  },
+  "include": [
+      "src/**/*"
+  ]
 }
