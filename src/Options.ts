@@ -5,16 +5,28 @@ interface Properties {
     LegalCopyright: string;
 }
 
+type ExecutionLevel = 'asInvoker' | 'highestAvailable' | 'requireAdministrator';
+
 export interface Options {
-    /** The entry file. */
+    /**
+     * The entry file.
+     */
     entry: string;
-    /** The output file. */
+    /**
+     * The output file.
+     */
     out: string;
-    /** The pkg argument string. */
+    /**
+     * The pkg argument string.
+     */
     pkg?: string[];
-    /** The pkg build target */
+    /**
+     * The pkg build target
+     * */
     target?: string;
-    /** The metadata within a version-information resource. */
+    /**
+     * The metadata within a version-information resource.
+     * */
     properties?: Properties;
     /**
      * See [MSDN](https://docs.microsoft.com/en-us/windows/win32/msi/version) for the version format.
@@ -25,4 +37,8 @@ export interface Options {
      * to set as the application's icon.
      */
     icon?: string;
+    /**
+     * The execution level that determines how UAC behaves when the executable is run.
+     */
+    executionLevel?: ExecutionLevel;
 }

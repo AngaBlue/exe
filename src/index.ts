@@ -63,6 +63,11 @@ async function exe(options: Options): Promise<void> {
         );
     }
 
+    // Execution level
+    const level = options.executionLevel || 'asInvoker';
+    const manifest = res.getResourceEntriesAsString(24, 1)[0][1];
+    res.replaceResourceEntryFromString(24, 1, language.lang, manifest.replace('asInvoker', level));
+
     // Regenerate and write to .exe
     res.outputResource(executable);
     writeFileSync(options.out, Buffer.from(executable.generate()));

@@ -8,6 +8,7 @@ const build = exe({
     version: '2.4.2',
     target: 'latest-win-x64',
     icon: join(__dirname, 'icon.ico'), // Application icons must be in .ico format
+    executionLevel: 'asInvoker',
     properties: {
         FileDescription: 'My Cool App',
         ProductName: 'My Cool App',
