@@ -1,5 +1,6 @@
 import { join } from 'path';
 import exe from '../src';
+import { execSync } from 'child_process';
 
 const build = exe({
     entry: join(__dirname, 'index.js'),
@@ -17,4 +18,7 @@ const build = exe({
     }
 });
 
-build.then(() => console.log('Build completed!'));
+build.then(() => {
+    console.log('Build completed!');
+    console.log(execSync(`"${join(__dirname, 'My Cool App.exe')}"`).toString());
+});
