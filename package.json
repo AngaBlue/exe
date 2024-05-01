@@ -26,16 +26,16 @@
   },
   "homepage": "https://github.com/AngaBlue/exe#readme",
   "devDependencies": {
-    "@angablue/eslint-config": "^1.4.4",
-    "@types/node": "^20.11.16",
-    "eslint": "^8.56.0",
+    "@angablue/eslint-config": "^1.4.5",
+    "@types/node": "^20.12.7",
+    "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "pkg": "^5.8.1",
-    "resedit": "^2.0.0"
+    "resedit": "^2.0.2"
   }
 }
