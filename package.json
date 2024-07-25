@@ -35,6 +35,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@vercel/ncc": "^0.38.1",
     "postject": "1.0.0-alpha.6",
     "resedit": "^2.0.2",
     "signtool": "^1.0.0"

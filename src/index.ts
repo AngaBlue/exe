@@ -2,6 +2,8 @@ import { promises as fs } from 'fs';
 import { type ResEdit, load } from 'resedit/cjs';
 import { VersionStringValues } from 'resedit/dist/resource';
 import { inject } from 'postject';
+import { resolve } from 'path';
+import ncc from '@vercel/ncc';
 import { execAsync, signtool } from './utils';
 import type { Options } from './Options';
 
@@ -22,15 +24,26 @@ async function exe(options: Options) {
     if (options.injectOnly !== true) {
         // Replace backslashes with forward slashes to avoid escaping issues
         const out = options.out.replace(/\\/g, '/');
+        const bundle = `${out}.bundle.js`;
         const seaConfig = `${out}.sea-config.json`;
         const seaBlob = `${out}.blob`;
+
+        // Bundle with ncc
+        const { code } = await ncc(resolve(options.entry), {
+            minify: true,
+            quiet: true,
+            target: 'es2023'
+        });
+
+        // Write the bundled code to a file
+        await fs.writeFile(bundle, code);
 
         // Write sea-config.json
         await fs.writeFile(
             seaConfig,
             JSON.stringify(
                 {
-                    main: options.entry,
+                    main: bundle,
                     output: seaBlob,
                     disableExperimentalSEAWarning: true
                 },
@@ -53,6 +66,7 @@ async function exe(options: Options) {
         await inject(out, 'NODE_SEA_BLOB', Buffer.from(seaBlobData), { sentinelFuse: 'NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2' });
 
         // Remove temporary files
+        await fs.unlink(bundle);
         await fs.unlink(seaConfig);
         await fs.unlink(seaBlob);
     }

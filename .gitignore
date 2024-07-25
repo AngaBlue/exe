@@ -3,3 +3,4 @@
 *.exe
 *.exe.blob
 *.exe.sea-config.json
+*.exe.bundle.js
