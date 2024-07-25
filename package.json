@@ -29,15 +29,15 @@
     "@angablue/eslint-config": "^1.4.5",
     "@types/node": "^20.12.7",
     "eslint": "^8.57.0",
-    "postject": "^1.0.0-alpha.6",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "signtool": "^1.0.0",
-    "resedit": "^2.0.2"
+    "postject": "^1.0.0-alpha.6",
+    "resedit": "^2.0.2",
+    "signtool": "^1.0.0"
   },
   "engines": {
     "node": ">=20.16.0"
