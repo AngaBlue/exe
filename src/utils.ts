@@ -6,6 +6,10 @@ const signtoolPackagePath = require.resolve('signtool');
 
 export const execAsync = promisify(exec);
 
+/**
+ * Get the path to the signtool executable.
+ * @returns The path to the signtool executable.
+ */
 function getSigntoolPath() {
     const signtoolPath = path.dirname(signtoolPackagePath);
     switch (process.arch) {
@@ -21,6 +25,11 @@ function getSigntoolPath() {
     }
 }
 
+/**
+ * Sign a file using signtool.
+ * @param args Arguments to pass to signtool.
+ * @returns A promise that resolves when the file is signed.
+ */
 export function signtool(args: string[]) {
     const signtoolPath = getSigntoolPath();
     return execAsync(`${signtoolPath} ${args.join(' ')}`);
