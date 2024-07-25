@@ -17,13 +17,9 @@ export interface Options {
      */
     out: string;
     /**
-     * The pkg argument string.
+     * Option to toggle the generation of the .exe file.
      */
-    pkg?: string[];
-    /**
-     * The pkg build target
-     * */
-    target?: string;
+    injectOnly?: boolean;
     /**
      * The metadata within a version-information resource.
      * */

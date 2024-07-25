@@ -8,7 +8,7 @@
   </a>
 </p>
 
-Build a portable binary for Windows systems using Vercel's [pkg](https://www.npmjs.com/package/pkg). As [pkg](https://www.npmjs.com/package/pkg) doesn't support modifying executable properties, this project serves to and aid in automating modifying the executable properties post build with the aid of [resedit-js](https://www.npmjs.com/package/resedit).
+Build a portable binary for Windows systems using Node's [SEA](https://nodejs.org/api/single-executable-applications.html). modifying executable properties is not supported by default, this project serves to and aid in automating modifying the executable properties post build with the aid of [resedit-js](https://www.npmjs.com/package/resedit).
 
 ### 🏠 [Homepage](https://github.com/AngaBlue/exe)
 
@@ -45,9 +45,8 @@ const exe = require("@angablue/exe");
 const build = exe({
   entry: "./index.js",
   out: "./build/My Cool App.exe",
-  pkg: ["-C", "GZip"], // Specify extra pkg arguments
+  injectOnly: false,
   version: "2.4.2",
-  target: "latest-win-x64",
   icon: "./assets/icon.ico", // Application icons must be in .ico format
   executionLevel: "asInvoker",
   properties: {
@@ -67,9 +66,8 @@ build.then(() => console.log("Build completed!"));
 | ---------------- | ----------------------------------------------------------------------------- | -------- | ------------------ | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `entry`          | Path to the entry file of the application.                                    | Yes      | N/A                | `'./index.js'`                            | Any valid file path.                                                                                                  |
 | `out`            | Path for the output executable file.                                          | Yes      | N/A                | `'./build/My Cool App.exe'`               | Any valid file path.                                                                                                  |
-| `pkg`            | [Extra arguments for the pkg package](https://github.com/vercel/pkg#options). | No       | `[]`               | `['-C', 'GZip']`                          | Array of pkg arguments.                                                                                               |
 | `version`        | Version of the application.                                                   | No       | None               | `'2.4.2'`                                 | Semantic version string. e.g. `major.minor.patch`                                                                     |
-| `target`         | Target node version and architecture.                                         | No       | `'latest-win-x64'` | `'latest-win-x64'`                        | Windows [pkg target string](https://github.com/vercel/pkg#options). e.g. `latest-win-x64`, `node18-windows-x64`, etc. |
+| `injectOnly`     | Toggle the generation of the .exe file.                                       | No       | false | true                        | If true will not generate the exe first and will only inject resources into an existing exe.  |
 | `icon`           | Path to the application's icon in .ico format.                                | No       | Node.js icon       | `'./assets/icon.ico'`                     | Any valid .ico file path.                                                                                             |
 | `executionLevel` | Execution level for the application.                                          | No       | `'asInvoker'`      | `'asInvoker'`                             | `asInvoker`, `highestAvailable`, `requireAdministrator`                                                               |
 | `properties`     | Metadata for the executable file.                                             | No       | None               | `{ FileDescription: 'My Cool App', ... }` | Key-value pairs as shown in example.                                                                                  |
