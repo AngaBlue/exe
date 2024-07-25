@@ -2,6 +2,8 @@ import { join } from 'path';
 import exe from '../src';
 import { execSync } from 'child_process';
 
+const start = Date.now();
+
 const build = exe({
     entry: join(__dirname, 'index.js'),
     out: join(__dirname, 'My Cool App.exe'),
@@ -17,6 +19,6 @@ const build = exe({
 });
 
 build.then(() => {
-    console.log('Build completed!');
+    console.log(`Build completed in ${Date.now() - start}ms`);
     console.log(execSync(`"${join(__dirname, 'My Cool App.exe')}"`).toString());
 });
