@@ -51,6 +51,10 @@ async function exe(options: Options): Promise<void> {
         // Inject blob into .exe
         const seaBlobData = await fs.readFile(seaBlob);
         await inject(out, 'NODE_SEA_BLOB', Buffer.from(seaBlobData), { sentinelFuse: 'NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2' });
+
+        // Remove temporary files
+        await fs.unlink(seaConfig);
+        await fs.unlink(seaBlob);
     }
 
     // Modify .exe w/ ResEdit
