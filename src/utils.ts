@@ -1,21 +1,12 @@
 import path from 'path';
 import { exec } from 'child_process';
+import { promisify } from 'util';
 
 const signtoolPackagePath = require.resolve('signtool');
 
-export function execAsync(command: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-        exec(command, null, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
-    });
-}
+export const execAsync = promisify(exec);
 
-function getSigntoolPath(): string {
+function getSigntoolPath() {
     const signtoolPath = path.dirname(signtoolPackagePath);
     switch (process.arch) {
         case 'ia32':
@@ -30,7 +21,7 @@ function getSigntoolPath(): string {
     }
 }
 
-export function signtool(args: string[]): Promise<void> {
+export function signtool(args: string[]) {
     const signtoolPath = getSigntoolPath();
     return execAsync(`${signtoolPath} ${args.join(' ')}`);
 }

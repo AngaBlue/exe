@@ -16,7 +16,7 @@ const language = {
  * @param {Options} options
  * @returns An empty promise which is resolved when the executable is built
  */
-async function exe(options: Options): Promise<void> {
+async function exe(options: Options) {
     // Build w/ Node - Single Executable Application
     // https://nodejs.org/api/single-executable-applications.html
     if (options.injectOnly !== true) {
