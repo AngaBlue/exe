@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import { type ResEdit, load } from 'resedit/cjs';
 import { VersionStringValues } from 'resedit/dist/resource';
+import { inject } from 'postject';
 import { execAsync, signtool } from './utils';
 import type { Options } from './Options';
 
@@ -48,7 +49,8 @@ async function exe(options: Options): Promise<void> {
         signtool(['remove', '/s', `"${out}"`]);
 
         // Inject blob into .exe
-        await execAsync(`postject "${out}" NODE_SEA_BLOB "${seaBlob}" --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2`);
+        const seaBlobData = await fs.readFile(seaBlob);
+        await inject(out, 'NODE_SEA_BLOB', Buffer.from(seaBlobData), { sentinelFuse: 'NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2' });
     }
 
     // Modify .exe w/ ResEdit
