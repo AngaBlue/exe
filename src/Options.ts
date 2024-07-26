@@ -17,10 +17,6 @@ export interface Options {
      */
     out: string;
     /**
-     * Option to toggle the generation of the .exe file.
-     */
-    injectOnly?: boolean;
-    /**
      * The metadata within a version-information resource.
      * */
     properties?: Properties;

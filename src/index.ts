@@ -21,56 +21,54 @@ const language = {
 async function exe(options: Options) {
     // Build w/ Node - Single Executable Application
     // https://nodejs.org/api/single-executable-applications.html
-    if (options.injectOnly !== true) {
-        // Replace backslashes with forward slashes to avoid escaping issues
-        const out = options.out.replace(/\\/g, '/');
-        const bundle = `${out}.bundle.js`;
-        const seaConfig = `${out}.sea-config.json`;
-        const seaBlob = `${out}.blob`;
+    // Replace backslashes with forward slashes to avoid escaping issues
+    const out = options.out.replace(/\\/g, '/');
+    const bundle = `${out}.bundle.js`;
+    const seaConfig = `${out}.sea-config.json`;
+    const seaBlob = `${out}.blob`;
 
-        // Bundle with ncc
-        const { code } = await ncc(resolve(options.entry), {
-            minify: true,
-            quiet: true,
-            target: 'es2023'
-        });
+    // Bundle with ncc
+    const { code } = await ncc(resolve(options.entry), {
+        minify: true,
+        quiet: true,
+        target: 'es2023'
+    });
 
-        // Write the bundled code to a file and prepend the SEA require() warning suppression
-        await fs.writeFile(bundle, `${warningSuppression}${code}`);
+    // Write the bundled code to a file and prepend the SEA require() warning suppression
+    await fs.writeFile(bundle, `${warningSuppression}${code}`);
 
-        // Write sea-config.json
-        await fs.writeFile(
-            seaConfig,
-            JSON.stringify(
-                {
-                    main: bundle,
-                    output: seaBlob,
-                    disableExperimentalSEAWarning: true,
-                    useCodeCache: true
-                },
-                null,
-                2
-            )
-        );
+    // Write sea-config.json
+    await fs.writeFile(
+        seaConfig,
+        JSON.stringify(
+            {
+                main: bundle,
+                output: seaBlob,
+                disableExperimentalSEAWarning: true,
+                useCodeCache: true
+            },
+            null,
+            2
+        )
+    );
 
-        // Generate blob
-        await execAsync(`node --experimental-sea-config "${seaConfig}"`);
+    // Generate blob
+    await execAsync(`node --experimental-sea-config "${seaConfig}"`);
 
-        // Generate .exe
-        await execAsync(`node -e "require('fs').copyFileSync(process.execPath, '${out}')"`);
+    // Generate .exe
+    await execAsync(`node -e "require('fs').copyFileSync(process.execPath, '${out}')"`);
 
-        // Remove the signature
-        signtool(['remove', '/s', `"${out}"`]);
+    // Remove the signature
+    signtool(['remove', '/s', `"${out}"`]);
 
-        // Inject blob into .exe
-        const seaBlobData = await fs.readFile(seaBlob);
-        await inject(out, 'NODE_SEA_BLOB', Buffer.from(seaBlobData), { sentinelFuse: 'NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2' });
+    // Inject blob into .exe
+    const seaBlobData = await fs.readFile(seaBlob);
+    await inject(out, 'NODE_SEA_BLOB', Buffer.from(seaBlobData), { sentinelFuse: 'NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2' });
 
-        // Remove temporary files
-        await fs.unlink(bundle);
-        await fs.unlink(seaConfig);
-        await fs.unlink(seaBlob);
-    }
+    // Remove temporary files
+    await fs.unlink(bundle);
+    await fs.unlink(seaConfig);
+    await fs.unlink(seaBlob);
 
     // Modify .exe w/ ResEdit
     const RE: typeof ResEdit = await load();
