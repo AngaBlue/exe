@@ -4,7 +4,7 @@ import { VersionStringValues } from 'resedit/dist/resource';
 import { inject } from 'postject';
 import { resolve } from 'path';
 import ncc from '@vercel/ncc';
-import { execAsync, signtool } from './utils';
+import { execAsync, signtool, warningSuppression } from './utils';
 import type { Options } from './Options';
 
 // Language code for en-us and encoding codepage for UTF-16
@@ -35,8 +35,8 @@ async function exe(options: Options) {
             target: 'es2023'
         });
 
-        // Write the bundled code to a file
-        await fs.writeFile(bundle, code);
+        // Write the bundled code to a file and prepend the SEA require() warning suppression
+        await fs.writeFile(bundle, `${warningSuppression}${code}`);
 
         // Write sea-config.json
         await fs.writeFile(
@@ -45,7 +45,8 @@ async function exe(options: Options) {
                 {
                     main: bundle,
                     output: seaBlob,
-                    disableExperimentalSEAWarning: true
+                    disableExperimentalSEAWarning: true,
+                    useCodeCache: true
                 },
                 null,
                 2
@@ -66,7 +67,7 @@ async function exe(options: Options) {
         await inject(out, 'NODE_SEA_BLOB', Buffer.from(seaBlobData), { sentinelFuse: 'NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2' });
 
         // Remove temporary files
-        await fs.unlink(bundle);
+        // await fs.unlink(bundle);
         await fs.unlink(seaConfig);
         await fs.unlink(seaBlob);
     }
