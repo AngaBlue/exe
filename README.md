@@ -20,7 +20,7 @@ Install this package and save to `devDependencies` using your package manager of
 npm i -D @angablue/exe
 ```
 
-⚠️**Warning**⚠️: This package is only supported on Windows systems running Node `v20.0.0` or newer.  For older versions of Node (`v14.0.0` or newer), please use the version `v2.1.3` of this package
+⚠️**Warning**⚠️: This package is only supported on Windows systems running Node `v20.0.0` or newer.  For older versions of Node (`v12.0.0` or newer), please use the version `v2.1.3` of this package
 
 ```sh
 npm i -D @angablue/exe@2.1.3
