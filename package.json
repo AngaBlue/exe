@@ -7,7 +7,8 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "test": "ts-node ./test/build.ts",
-    "lint": "eslint . --ext js,jsx,ts,tsx --fix"
+    "lint": "eslint . --ext js,jsx,ts,tsx --fix",
+    "watch": "npm run clean && tsc -w"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "@vercel/ncc": "^0.38.1",
+    "bytenode": "^1.5.6",
     "postject": "1.0.0-alpha.6",
     "resedit": "^2.0.2",
     "signtool": "^1.0.0"
