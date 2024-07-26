@@ -22,6 +22,5 @@ declare module '@vercel/ncc' {
         assets: { [filePath: string]: { source: string | Buffer; permissions: number; symlinks: boolean } };
     }
 
-    function ncc(input: string, options?: NCCOptions): Promise<NCCResult>;
-    export = ncc;
+    export default function ncc(input: string, options?: NCCOptions): Promise<NCCResult>;
 }
