@@ -31,7 +31,7 @@ async function exe(options: Options) {
     const { code } = await ncc(resolve(options.entry), {
         minify: true,
         quiet: true,
-        target: 'es2023'
+        target: 'es2021'
     });
 
     // Write the bundled code to a file and prepend the SEA require() warning suppression
