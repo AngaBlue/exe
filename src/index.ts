@@ -67,7 +67,7 @@ async function exe(options: Options) {
         await inject(out, 'NODE_SEA_BLOB', Buffer.from(seaBlobData), { sentinelFuse: 'NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2' });
 
         // Remove temporary files
-        // await fs.unlink(bundle);
+        await fs.unlink(bundle);
         await fs.unlink(seaConfig);
         await fs.unlink(seaBlob);
     }
