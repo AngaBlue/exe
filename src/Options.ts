@@ -17,14 +17,6 @@ export interface Options {
      */
     out: string;
     /**
-     * The pkg argument string.
-     */
-    pkg?: string[];
-    /**
-     * The pkg build target
-     * */
-    target?: string;
-    /**
      * The metadata within a version-information resource.
      * */
     properties?: Properties;

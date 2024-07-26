@@ -1,3 +1,6 @@
 /node_modules
 /dist
 *.exe
+*.exe.blob
+*.exe.sea-config.json
+*.exe.bundle.js

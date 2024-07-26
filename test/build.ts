@@ -2,12 +2,12 @@ import { join } from 'path';
 import exe from '../src';
 import { execSync } from 'child_process';
 
+const start = Date.now();
+
 const build = exe({
     entry: join(__dirname, 'index.js'),
     out: join(__dirname, 'My Cool App.exe'),
-    pkg: ['-C', 'GZip'], // Specify extra pkg arguments
     version: '2.4.2',
-    target: 'latest-win-x64',
     icon: join(__dirname, 'icon.ico'), // Application icons must be in .ico format
     executionLevel: 'asInvoker',
     properties: {
@@ -19,6 +19,6 @@ const build = exe({
 });
 
 build.then(() => {
-    console.log('Build completed!');
+    console.log(`Build completed in ${Date.now() - start}ms`);
     console.log(execSync(`"${join(__dirname, 'My Cool App.exe')}"`).toString());
 });

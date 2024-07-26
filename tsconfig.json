@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-      "target": "ES6",
+      "target": "ES2021",
       "module": "CommonJS",
       "moduleResolution": "Node",
       "declaration": true,
@@ -10,7 +10,7 @@
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
-      "strict": true,
+      "strict": false,
   },
   "include": [
       "src/**/*"

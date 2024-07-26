@@ -8,7 +8,7 @@
   </a>
 </p>
 
-Build a portable binary for Windows systems using Vercel's [pkg](https://www.npmjs.com/package/pkg). As [pkg](https://www.npmjs.com/package/pkg) doesn't support modifying executable properties, this project serves to and aid in automating modifying the executable properties post build with the aid of [resedit-js](https://www.npmjs.com/package/resedit).
+Build a portable binary for Windows systems using Node's [SEA](https://nodejs.org/api/single-executable-applications.html). This project serves to and aid in automating bundling your source code with [`@vercel/ncc`](https://github.com/vercel/ncc) and modifying the executable properties post build with [`resedit-js`](https://www.npmjs.com/package/resedit).
 
 ### 🏠 [Homepage](https://github.com/AngaBlue/exe)
 
@@ -17,8 +17,16 @@ Build a portable binary for Windows systems using Vercel's [pkg](https://www.npm
 Install this package and save to `devDependencies` using your package manager of choice.
 
 ```sh
- npm i -D @angablue/exe
+npm i -D @angablue/exe
 ```
+
+⚠️**Warning**⚠️: This package is only supported on Windows systems running Node `v20.0.0` or newer.  For older versions of Node (`v14.0.0` or newer), please use the version `v2.1.3` of this package
+
+```sh
+npm i -D @angablue/exe@2.1.3
+```
+
+*Please note that the older version of this package is no longer maintained.  Refer to the [previous documentation here](https://github.com/AngaBlue/exe/blob/b0ddec947e948bd4172b2662296ccb30356e0de0/README.md).*
 
 ## Basic Usage
 
@@ -34,6 +42,8 @@ const build = exe({
 build.then(() => console.log("Build completed!"));
 ```
 
+`@angablue/exe` has first-class TypeScript support.  You can use it in your TypeScript projects without any additional configuration.
+
 ## Example Usage
 
 Specify more arguments and completely customise the resultant executable.
@@ -45,9 +55,7 @@ const exe = require("@angablue/exe");
 const build = exe({
   entry: "./index.js",
   out: "./build/My Cool App.exe",
-  pkg: ["-C", "GZip"], // Specify extra pkg arguments
   version: "2.4.2",
-  target: "latest-win-x64",
   icon: "./assets/icon.ico", // Application icons must be in .ico format
   executionLevel: "asInvoker",
   properties: {
@@ -65,12 +73,10 @@ build.then(() => console.log("Build completed!"));
 
 | Option           | Description                                                                   | Required | Default Value      | Example Value                             | Possible Values                                                                                                       |
 | ---------------- | ----------------------------------------------------------------------------- | -------- | ------------------ | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `entry`          | Path to the entry file of the application.                                    | Yes      | N/A                | `'./index.js'`                            | Any valid file path.                                                                                                  |
-| `out`            | Path for the output executable file.                                          | Yes      | N/A                | `'./build/My Cool App.exe'`               | Any valid file path.                                                                                                  |
-| `pkg`            | [Extra arguments for the pkg package](https://github.com/vercel/pkg#options). | No       | `[]`               | `['-C', 'GZip']`                          | Array of pkg arguments.                                                                                               |
+| `entry`          | Path to the entry file of the application.                                    | Yes      | N/A                | `'./index.js'`                            | Any valid file path to a `.js`/`.ts` script.                                                                                                  |
+| `out`            | Path for the output executable file.                                          | Yes      | N/A                | `'./build/My Cool App.exe'`               | Any valid file path (ending with `.exe`).                                                                                                  |
 | `version`        | Version of the application.                                                   | No       | None               | `'2.4.2'`                                 | Semantic version string. e.g. `major.minor.patch`                                                                     |
-| `target`         | Target node version and architecture.                                         | No       | `'latest-win-x64'` | `'latest-win-x64'`                        | Windows [pkg target string](https://github.com/vercel/pkg#options). e.g. `latest-win-x64`, `node18-windows-x64`, etc. |
-| `icon`           | Path to the application's icon in .ico format.                                | No       | Node.js icon       | `'./assets/icon.ico'`                     | Any valid .ico file path.                                                                                             |
+| `icon`           | Path to the application's icon in .ico format.                                | No       | Node.js icon       | `'./assets/icon.ico'`                     | Any valid file path to a `.ico` icon.                                                                                             |
 | `executionLevel` | Execution level for the application.                                          | No       | `'asInvoker'`      | `'asInvoker'`                             | `asInvoker`, `highestAvailable`, `requireAdministrator`                                                               |
 | `properties`     | Metadata for the executable file.                                             | No       | None               | `{ FileDescription: 'My Cool App', ... }` | Key-value pairs as shown in example.                                                                                  |
 
