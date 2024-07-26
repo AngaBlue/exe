@@ -11,6 +11,10 @@
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
       "strict": true,
+      "paths": {
+        "postject": ["./src/@types/postject"],
+        "@vercel/ncc": ["./src/@types/vercel__ncc"]
+      }
   },
   "include": [
       "src/**/*"
