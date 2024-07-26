@@ -20,10 +20,10 @@ Install this package and save to `devDependencies` using your package manager of
 npm i -D @angablue/exe
 ```
 
-⚠️**Warning**: This package is only supported on Windows systems running Node `v20.0.0` or newer.  For older versions of Node (`v14.0.0` or newer), please use the version `v2.1.3` of this package
+⚠️**Warning**⚠️: This package is only supported on Windows systems running Node `v20.0.0` or newer.  For older versions of Node (`v14.0.0` or newer), please use the version `v2.1.3` of this package
 
 ```sh
- npm i -D @angablue/exe@2.1.3
+npm i -D @angablue/exe@2.1.3
 ```
 
 *Please note that the older version of this package is no longer maintained.  Refer to the [previous documentation here](https://github.com/AngaBlue/exe/blob/b0ddec947e948bd4172b2662296ccb30356e0de0/README.md).*
@@ -41,6 +41,8 @@ const build = exe({
 
 build.then(() => console.log("Build completed!"));
 ```
+
+`@angablue/exe` has first-class TypeScript support.  You can use it in your TypeScript projects without any additional configuration.
 
 ## Example Usage
 
