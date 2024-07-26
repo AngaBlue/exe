@@ -1,6 +1,6 @@
 {
   "name": "@angablue/exe",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Build a portable binary for Windows systems using Vercel's pkg",
   "main": "dist/index.js",
   "scripts": {
