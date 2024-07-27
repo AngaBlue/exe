@@ -32,7 +32,7 @@ function getSigntoolPath() {
  */
 export function signtool(args: string[]) {
     const signtoolPath = getSigntoolPath();
-    return execAsync(`${signtoolPath} ${args.join(' ')}`);
+    return execAsync(`"${signtoolPath}" ${args.join(' ')}`);
 }
 
 export const warningSuppression =
