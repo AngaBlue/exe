@@ -28,14 +28,24 @@ async function exe(options: Options) {
     const seaBlob = `${out}.blob`;
 
     // Bundle with ncc
-    const { code } = await ncc(resolve(options.entry), {
+    let { code } = await ncc(resolve(options.entry), {
         minify: true,
         quiet: true,
         target: 'es2021'
     });
 
     // Write the bundled code to a file and prepend the SEA require() warning suppression
-    await fs.writeFile(bundle, `${warningSuppression}${code}`);
+    const pattern = /^#!.*\n/;
+    const match = code.match(pattern);
+    if (match) {
+        // Shebang found, insert after the shebang
+        code = `${match[0]}${warningSuppression}${code.slice(match[0].length)}`;
+    } else {
+        // No shebang, prepend at the beginning
+        code = `${warningSuppression}${code}`;
+    }
+
+    await fs.writeFile(bundle, code);
 
     // Write sea-config.json
     await fs.writeFile(

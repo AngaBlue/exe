@@ -1,1 +1,3 @@
-console.log('Hello world!');
+#!/usr/bin/env node
+const helloWorld = require('./module');
+helloWorld();
