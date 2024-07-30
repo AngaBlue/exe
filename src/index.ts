@@ -54,8 +54,7 @@ async function exe(options: Options) {
             {
                 main: bundle,
                 output: seaBlob,
-                disableExperimentalSEAWarning: true,
-                useCodeCache: true
+                disableExperimentalSEAWarning: true
             },
             null,
             2
@@ -69,7 +68,7 @@ async function exe(options: Options) {
     await execAsync(`node -e "require('fs').copyFileSync(process.execPath, '${out}')"`);
 
     // Remove the signature
-    signtool(['remove', '/s', `"${out}"`]);
+    await signtool(['remove', '/s', `"${out}"`]);
 
     // Inject blob into .exe
     const seaBlobData = await fs.readFile(seaBlob);
