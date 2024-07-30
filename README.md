@@ -55,6 +55,7 @@ const exe = require("@angablue/exe");
 const build = exe({
   entry: "./index.js",
   out: "./build/My Cool App.exe",
+  skipBundle: false,
   version: "2.4.2",
   icon: "./assets/icon.ico", // Application icons must be in .ico format
   executionLevel: "asInvoker",
@@ -73,10 +74,11 @@ build.then(() => console.log("Build completed!"));
 
 | Option           | Description                                                                   | Required | Default Value      | Example Value                             | Possible Values                                                                                                       |
 | ---------------- | ----------------------------------------------------------------------------- | -------- | ------------------ | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `entry`          | Path to the entry file of the application.                                    | Yes      | N/A                | `'./index.js'`                            | Any valid file path to a `.js`/`.ts` script.                                                                                                  |
-| `out`            | Path for the output executable file.                                          | Yes      | N/A                | `'./build/My Cool App.exe'`               | Any valid file path (ending with `.exe`).                                                                                                  |
+| `entry`          | Path to the entry file of the application.                                    | Yes      | N/A                | `'./index.js'`                            | Any valid file path to a `.js`/`.ts` script.                                                                          |
+| `out`            | Path for the output executable file.                                          | Yes      | N/A                | `'./build/My Cool App.exe'`               | Any valid file path (ending with `.exe`).                                                                             |
+| `skipBundle`     | Skip the bundling process and use provided entry file as is.                  | No       | `false`            | `true`                                    | `Boolean`                                                                                                             |
 | `version`        | Version of the application.                                                   | No       | None               | `'2.4.2'`                                 | Semantic version string. e.g. `major.minor.patch`                                                                     |
-| `icon`           | Path to the application's icon in .ico format.                                | No       | Node.js icon       | `'./assets/icon.ico'`                     | Any valid file path to a `.ico` icon.                                                                                             |
+| `icon`           | Path to the application's icon in .ico format.                                | No       | Node.js icon       | `'./assets/icon.ico'`                     | Any valid file path to a `.ico` icon.                                                                                 |
 | `executionLevel` | Execution level for the application.                                          | No       | `'asInvoker'`      | `'asInvoker'`                             | `asInvoker`, `highestAvailable`, `requireAdministrator`                                                               |
 | `properties`     | Metadata for the executable file.                                             | No       | None               | `{ FileDescription: 'My Cool App', ... }` | Key-value pairs as shown in example.                                                                                  |
 

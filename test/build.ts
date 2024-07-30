@@ -7,6 +7,7 @@ const start = Date.now();
 const build = exe({
     entry: join(__dirname, 'index.js'),
     out: join(__dirname, 'My Cool App.exe'),
+    skipBundle: false,
     version: '2.4.2',
     icon: join(__dirname, 'icon.ico'), // Application icons must be in .ico format
     executionLevel: 'asInvoker',

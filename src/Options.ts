@@ -17,9 +17,9 @@ export interface Options {
      */
     out: string;
     /**
-     * The metadata within a version-information resource.
-     * */
-    properties?: Properties;
+     * Skip the bundling process and use the provided entry file as is.
+     */
+    skipBundle?: boolean;
     /**
      * See [MSDN](https://docs.microsoft.com/en-us/windows/win32/msi/version) for the version format.
      */
@@ -33,4 +33,8 @@ export interface Options {
      * The execution level that determines how UAC behaves when the executable is run.
      */
     executionLevel?: ExecutionLevel;
+    /**
+     * The metadata within a version-information resource.
+     * */
+    properties?: Properties;
 }

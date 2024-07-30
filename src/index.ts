@@ -27,12 +27,20 @@ async function exe(options: Options) {
     const seaConfig = `${out}.sea-config.json`;
     const seaBlob = `${out}.blob`;
 
-    // Bundle with ncc
-    let { code } = await ncc(resolve(options.entry), {
-        minify: true,
-        quiet: true,
-        target: 'es2021'
-    });
+    let code = '';
+    if (options.skipBundle) {
+        // Use the entry file as is
+        code = await fs.readFile(resolve(options.entry), 'utf8');
+    } else {
+        // Bundle with ncc
+        const output = await ncc(resolve(options.entry), {
+            minify: true,
+            quiet: true,
+            target: 'es2021'
+        });
+
+        code = output.code;
+    }
 
     // Write the bundled code to a file and prepend the SEA require() warning suppression
     const pattern = /^#!.*\n/;
