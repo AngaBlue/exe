@@ -3,7 +3,7 @@
     <a href="https://www.npmjs.com/package/@angablue/exe" target="_blank">
   <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/AngaBlue/exe?label=Version">
   </a>
-  <a href="https://github.com/AngaBlue/exe/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/AngaBlue/exe/blob/main/LICENSE" target="_blank">
     <img alt="License: LGPL--3.0--or--later" src="https://img.shields.io/github/license/AngaBlue/exe?color=green" />
   </a>
 </p>
@@ -96,4 +96,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © [AngaBlue](https://github.com/AngaBlue).<br />
-This project is [LGPL--3.0--or--later](https://github.com/AngaBlue/exe/blob/master/LICENSE) licensed.
+This project is [LGPL--3.0--or--later](https://github.com/AngaBlue/exe/blob/main/LICENSE) licensed.
