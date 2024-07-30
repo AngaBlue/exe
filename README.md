@@ -1,6 +1,6 @@
 <h1 align="center">Node.js Windows Executable</h1>
 <p align="center">
-    <a href="https://github.com/AngaBlue/exe/packages/1108141" target="_blank">
+    <a href="https://www.npmjs.com/package/@angablue/exe" target="_blank">
   <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/AngaBlue/exe?label=Version">
   </a>
   <a href="https://github.com/AngaBlue/exe/blob/master/LICENSE" target="_blank">
