@@ -2,13 +2,13 @@
     "entry": "./test/index.js",
     "out": "./test/My Cool App.exe",
     "skipBundle": false,
-    "version": "2.4.2",
+    "version": "package:version",
     "icon": "./test/icon.ico",
     "executionLevel": "asInvoker",
     "properties": {
         "FileDescription": "My Cool App",
         "ProductName": "My Cool App",
-        "LegalCopyright": "AngaBlue https://anga.blue",
-        "OriginalFilename": "AngaBlue"
+        "LegalCopyright": "Copyright package:author.name",
+        "OriginalFilename": "package:name"
     }
 }

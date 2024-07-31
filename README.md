@@ -45,14 +45,14 @@ Create a JSON configuration file with the following options:
     "entry": "index.js",
     "out": "My Cool App.exe",
     "skipBundle": false,
-    "version": "2.4.2",
+    "version": "package:version",
     "icon": "icon.ico",
     "executionLevel": "asInvoker",
     "properties": {
         "FileDescription": "My Cool App",
         "ProductName": "My Cool App",
-        "LegalCopyright": "AngaBlue https://anga.blue",
-        "OriginalFilename": "AngaBlue"
+        "LegalCopyright": "Copyright package:author.name",
+        "OriginalFilename": "package:name"
     }
 }
 ```

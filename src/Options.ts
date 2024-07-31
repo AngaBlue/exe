@@ -3,6 +3,8 @@ interface Properties {
     ProductName: string;
     OriginalFilename: string;
     LegalCopyright: string;
+
+    [key: string]: any;
 }
 
 type ExecutionLevel = 'asInvoker' | 'highestAvailable' | 'requireAdministrator';
@@ -37,4 +39,6 @@ export interface Options {
      * The metadata within a version-information resource.
      * */
     properties?: Properties;
+
+    [key: string]: any;
 }

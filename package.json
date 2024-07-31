@@ -24,7 +24,10 @@
     "build",
     "binary"
   ],
-  "author": "AngaBlue <contact@anga.blue>",
+  "author": {
+    "name": "AngaBlue",
+    "email": "contact@anga.blue"
+  },
   "license": "LGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/AngaBlue/exe/issues"
