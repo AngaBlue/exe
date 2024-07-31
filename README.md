@@ -28,7 +28,36 @@ npm i -D @angablue/exe@2.1.3
 
 *Please note that the older version of this package is no longer maintained.  Refer to the [previous documentation here](https://github.com/AngaBlue/exe/blob/b0ddec947e948bd4172b2662296ccb30356e0de0/README.md).*
 
-## Basic Usage
+## CLI Usage
+
+Point to a JSON configuration file to build your executable:
+
+```sh
+npx exe ./config-exe.json
+```
+
+### Configuration File
+
+Create a JSON configuration file with the following options:
+
+```json
+{
+    "entry": "index.js",
+    "out": "My Cool App.exe",
+    "skipBundle": false,
+    "version": "2.4.2",
+    "icon": "icon.ico",
+    "executionLevel": "asInvoker",
+    "properties": {
+        "FileDescription": "My Cool App",
+        "ProductName": "My Cool App",
+        "LegalCopyright": "AngaBlue https://anga.blue",
+        "OriginalFilename": "AngaBlue"
+    }
+}
+```
+
+## API Usage
 
 ```js
 // build.js

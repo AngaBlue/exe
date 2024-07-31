@@ -73,7 +73,7 @@ async function exe(options: Options) {
     await execAsync(`node --experimental-sea-config "${seaConfig}"`);
 
     // Generate .exe
-    await execAsync(`node -e "require('fs').copyFileSync(process.execPath, '${out}')"`);
+    await fs.copyFile(process.execPath, out);
 
     // Remove the signature
     await signtool(['remove', '/s', `"${out}"`]);
