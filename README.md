@@ -33,7 +33,7 @@ npm i -D @angablue/exe@2.1.3
 Point to a JSON configuration file to build your executable:
 
 ```sh
-npx exe ./config-exe.json
+npx exe config-exe.json
 ```
 
 ### Configuration File
