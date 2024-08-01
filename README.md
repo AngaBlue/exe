@@ -30,15 +30,25 @@ npm i -D @angablue/exe@2.1.3
 
 ## CLI Usage
 
-Point to a JSON configuration file to build your executable:
+Point to a JSON configuration file (default `exe.json`) to build your executable:
 
 ```sh
-npx exe config-exe.json
+npx exe exe.json
 ```
 
 ### Configuration File
 
-Create a JSON configuration file with the following options:
+Create a JSON configuration file (`exe.json`) with the following options:
+
+```json
+{
+    "entry": "index.js",
+    "out": "My Cool App.exe"
+}
+```
+`@angablue/exe` has first-class TypeScript support.  You can use it in your TypeScript projects without any additional configuration by specifying your TypeScript entry file (such as `index.ts`).
+
+Optionally, you can specify more arguments and completely customise the resultant executable:
 
 ```json
 {
@@ -58,6 +68,7 @@ Create a JSON configuration file with the following options:
 ```
 
 ## API Usage
+If you prefer to use this package programmatically, you can import this module into your Node.js script:
 
 ```js
 // build.js
@@ -70,8 +81,6 @@ const build = exe({
 
 build.then(() => console.log("Build completed!"));
 ```
-
-`@angablue/exe` has first-class TypeScript support.  You can use it in your TypeScript projects without any additional configuration.
 
 ## Example Usage
 
