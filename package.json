@@ -10,7 +10,7 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "test": "ts-node ./test/build.ts",
-    "test:cli": "ts-node ./src/cli.ts ./test/exe.json",
+    "test:cli": "ts-node ./src/cli.ts ./test/exee.json",
     "lint": "eslint . --ext js,jsx,ts,tsx --fix",
     "watch": "npm run clean && tsc -w"
   },
