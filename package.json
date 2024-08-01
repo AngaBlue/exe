@@ -4,13 +4,13 @@
   "description": "Build a portable binary for Windows systems using Vercel's pkg",
   "main": "dist/index.js",
   "bin": {
-    "exe": "bin/cli.js"
+    "exe": "dist/cli.js"
   },
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "test": "ts-node ./test/build.ts",
-    "test:cli": "node ./bin/cli.js ./test/config-exe.json",
+    "test:cli": "ts-node ./src/cli.ts ./test/exe.json",
     "lint": "eslint . --ext js,jsx,ts,tsx --fix",
     "watch": "npm run clean && tsc -w"
   },
