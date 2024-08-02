@@ -42,23 +42,23 @@ export const warningSuppression =
 
 /**
  * Replace package:(name|version|author) with the value from the data object.
- * Example 1: "package:name" will be replaced with the name from the package.json file.
- * Example 2: "package:author.name" will be replaced with the author.name from the package.json file.
+ * Example 1: "{package:name}" will be replaced with the name from the package.json file.
+ * Example 2: "{package:author.name}" will be replaced with the author.name from the package.json file.
  *
  * @param value string to parse
  * @param data object to use for replacement
  * @returns updated value
  */
 function parseValue(value: string, data: any) {
-    // https://regex101.com/r/AvVwrD/2
-    const regex = /(package:(?<prop>[a-z]+)(\.(?<subprop>[a-z]+))?)/gi;
+    // https://regex101.com/r/AvVwrD/3
+    const regex = /\{(package:(?<prop>[a-z]+)(\.(?<subprop>[a-z]+))?)\}/gi;
     const match = regex.exec(value);
-    if (match?.groups?.prop) {
-        let dataVal = data[match?.groups?.prop];
-        if (match?.groups?.subprop) {
-            dataVal = data[match?.groups?.prop][match?.groups?.subprop];
+    const { prop, subprop } = match?.groups || {};
+    if (prop && data[prop]) {
+        if (subprop && data[prop][subprop]) {
+            return value.replace(regex, data[prop][subprop]);
         }
-        return value.replace(regex, dataVal);
+        return value.replace(regex, data[prop]);
     }
     return value;
 }
@@ -78,15 +78,15 @@ export async function parseOptions(options: Options) {
         const newOptions: { [key: string]: any } = {
             properties: {}
         };
+        // eslint-disable-next-line guard-for-in
         for (const key in rest) {
-            if (typeof rest[key] === 'string') {
-                newOptions[key] = parseValue(rest[key], packageJson);
-            }
+            const isStr = typeof rest[key] === 'string';
+            newOptions[key] = isStr ? parseValue(rest[key], packageJson) : rest[key];
         }
+        // eslint-disable-next-line guard-for-in
         for (const key in properties) {
-            if (typeof properties[key] === 'string') {
-                newOptions.properties[key] = parseValue(properties[key], packageJson);
-            }
+            const isStr = typeof properties[key] === 'string';
+            newOptions.properties[key] = isStr ? parseValue(properties[key], packageJson) : properties[key];
         }
         return newOptions;
     } catch (err) {

@@ -55,14 +55,14 @@ Optionally, you can specify more arguments and completely customise the resultan
     "entry": "index.js",
     "out": "My Cool App.exe",
     "skipBundle": false,
-    "version": "package:version",
+    "version": "{package:version}",
     "icon": "icon.ico",
     "executionLevel": "asInvoker",
     "properties": {
-        "FileDescription": "My Cool App",
+        "FileDescription": "{package:description}",
         "ProductName": "My Cool App",
-        "LegalCopyright": "Copyright package:author.name",
-        "OriginalFilename": "package:name"
+        "LegalCopyright": "Copyright {package:author.name}",
+        "OriginalFilename": "{package:name}"
     }
 }
 ```
