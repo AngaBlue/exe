@@ -3,3 +3,4 @@ test
 /*.*
 tsconfig.json
 pnpm-lock.yaml
+biome.jsonc
