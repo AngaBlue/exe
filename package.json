@@ -18,12 +18,7 @@
 		"type": "git",
 		"url": "git+https://github.com/AngaBlue/exe.git"
 	},
-	"keywords": [
-		"exe",
-		"windows",
-		"build",
-		"binary"
-	],
+	"keywords": ["exe", "windows", "build", "binary"],
 	"author": {
 		"name": "AngaBlue",
 		"email": "contact@anga.blue"
