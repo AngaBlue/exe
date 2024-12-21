@@ -1,20 +1,18 @@
 {
-  "compilerOptions": {
-      "target": "es2021",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "declaration": true,
-      "outDir": "./dist",
-      "newLine": "lf",
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "paths": {
-        "postject": ["./src/@types/postject"],
-        "@vercel/ncc": ["./src/@types/vercel__ncc"]
-      }
-  },
-  "include": [
-      "src/**/*"
-  ]
+	"compilerOptions": {
+		"target": "es2021",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"declaration": true,
+		"outDir": "./dist",
+		"newLine": "lf",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"paths": {
+			"postject": ["./src/@types/postject"],
+			"@vercel/ncc": ["./src/@types/vercel__ncc"]
+		}
+	},
+	"include": ["src/**/*"]
 }

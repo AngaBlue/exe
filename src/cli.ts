@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import { resolve } from 'path';
-import { readFile } from 'fs/promises';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import exe from '.';
 
 declare interface Error {
-    name: string;
-    message: string;
-    stack?: string;
-    code?: number | string;
+	name: string;
+	message: string;
+	stack?: string;
+	code?: number | string;
 }
 
 /**
@@ -16,24 +16,24 @@ declare interface Error {
  * @param err The error message to display.
  */
 function exitWithError(err: string) {
-    console.error(err);
-    console.error('');
-    console.error('Usage: exe [exe.json]');
-    process.exit(1);
+	console.error(err);
+	console.error('');
+	console.error('Usage: exe [exe.json]');
+	process.exit(1);
 }
 
 (async function main() {
-    const args = process.argv.splice(2);
+	const args = process.argv.splice(2);
 
-    try {
-        const exeJsonPath = resolve(args[0] || 'exe.json');
-        const exeJson = await readFile(exeJsonPath);
-        const exeConfig = JSON.parse(String(exeJson));
-        await exe(exeConfig);
-    } catch (err) {
-        if ((err as Error).code === 'ENOENT') return exitWithError(`File not found: ${args[0]}`);
-        return exitWithError((err as Error).message);
-    }
+	try {
+		const exeJsonPath = resolve(args[0] || 'exe.json');
+		const exeJson = await readFile(exeJsonPath);
+		const exeConfig = JSON.parse(String(exeJson));
+		await exe(exeConfig);
+	} catch (err) {
+		if ((err as Error).code === 'ENOENT') return exitWithError(`File not found: ${args[0]}`);
+		return exitWithError((err as Error).message);
+	}
 
-    process.exit(0);
+	process.exit(0);
 })();

@@ -1,54 +1,47 @@
 {
-  "name": "@angablue/exe",
-  "version": "3.2.3",
-  "description": "Build a portable binary for Windows systems using Vercel's pkg",
-  "main": "dist/index.js",
-  "bin": {
-    "exe": "dist/cli.js"
-  },
-  "scripts": {
-    "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
-    "test": "ts-node ./test/build.ts",
-    "test:cli": "ts-node ./src/cli.ts ./test/exee.json",
-    "lint": "eslint . --ext js,jsx,ts,tsx --fix",
-    "watch": "npm run clean && tsc -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AngaBlue/exe.git"
-  },
-  "keywords": [
-    "exe",
-    "windows",
-    "build",
-    "binary"
-  ],
-  "author": {
-    "name": "AngaBlue",
-    "email": "contact@anga.blue"
-  },
-  "license": "LGPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/AngaBlue/exe/issues"
-  },
-  "homepage": "https://github.com/AngaBlue/exe#readme",
-  "devDependencies": {
-    "@angablue/eslint-config": "^1.4.5",
-    "@types/node": "^20.14.12",
-    "eslint": "^8.57.0",
-    "prettier": "^3.3.3",
-    "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
-  },
-  "dependencies": {
-    "@vercel/ncc": "^0.38.1",
-    "postject": "1.0.0-alpha.6",
-    "resedit": "^2.0.2",
-    "signtool": "^1.0.0"
-  },
-  "engines": {
-    "node": ">=20.0.0"
-  }
+	"name": "@angablue/exe",
+	"version": "3.2.3",
+	"description": "Build a portable binary for Windows systems using Vercel's pkg",
+	"main": "dist/index.js",
+	"bin": {
+		"exe": "dist/cli.js"
+	},
+	"scripts": {
+		"clean": "rimraf dist",
+		"build": "npm run clean && tsc",
+		"test": "ts-node ./test/build.ts",
+		"test:cli": "ts-node ./src/cli.ts ./test/exe.json",
+		"lint": "biome check --fix --error-on-warnings",
+		"watch": "npm run clean && tsc -w"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AngaBlue/exe.git"
+	},
+	"keywords": ["exe", "windows", "build", "binary"],
+	"author": {
+		"name": "AngaBlue",
+		"email": "contact@anga.blue"
+	},
+	"license": "LGPL-3.0-or-later",
+	"bugs": {
+		"url": "https://github.com/AngaBlue/exe/issues"
+	},
+	"homepage": "https://github.com/AngaBlue/exe#readme",
+	"devDependencies": {
+		"@angablue/biome-config": "^1.0.0",
+		"@types/node": "^20.14.12",
+		"rimraf": "^6.0.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"@vercel/ncc": "^0.38.1",
+		"postject": "1.0.0-alpha.6",
+		"resedit": "^2.0.2",
+		"signtool": "^1.0.0"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	}
 }

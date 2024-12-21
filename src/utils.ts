@@ -1,8 +1,8 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import { exec } from 'child_process';
-import { promisify } from 'util';
-import { Options } from './Options';
+import { exec } from 'node:child_process';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import { promisify } from 'node:util';
+import type { Options } from './Options';
 
 const signtoolPackagePath = require.resolve('signtool');
 
@@ -13,18 +13,16 @@ export const execAsync = promisify(exec);
  * @returns The path to the signtool executable.
  */
 function getSigntoolPath() {
-    const signtoolPath = path.dirname(signtoolPackagePath);
-    switch (process.arch) {
-        case 'ia32':
-            return path.join(signtoolPath, 'signtool', 'x86', 'signtool.exe').replace(/\\/g, '/');
+	const signtoolPath = path.dirname(signtoolPackagePath);
+	switch (process.arch) {
+		case 'ia32':
+			return path.join(signtoolPath, 'signtool', 'x86', 'signtool.exe').replace(/\\/g, '/');
 
-        case 'x64':
-            return path.join(signtoolPath, 'signtool', 'x64', 'signtool.exe').replace(/\\/g, '/');
-
-        case 'arm':
-        default:
-            throw new Error('Signtool is not supported in this environment');
-    }
+		case 'x64':
+			return path.join(signtoolPath, 'signtool', 'x64', 'signtool.exe').replace(/\\/g, '/');
+		default:
+			throw new Error('Signtool is not supported in this environment');
+	}
 }
 
 /**
@@ -33,34 +31,51 @@ function getSigntoolPath() {
  * @returns A promise that resolves when the file is signed.
  */
 export function signtool(args: string[]) {
-    const signtoolPath = getSigntoolPath();
-    return execAsync(`"${signtoolPath}" ${args.join(' ')}`);
+	const signtoolPath = getSigntoolPath();
+	return execAsync(`"${signtoolPath}" ${args.join(' ')}`);
 }
 
 export const warningSuppression =
-    "const originalError=console.error;console.error=(msg,...args)=>{if(typeof msg==='string'&&msg.includes('Single executable application is an experimental feature and might change at any time')||msg.includes('Currently the require() provided to the main script embedded into single-executable applications only supports loading built-in modules.'))return;originalError(msg,...args);};";
+	"const originalError=console.error;console.error=(msg,...args)=>{if(typeof msg==='string'&&msg.includes('Single executable application is an experimental feature and might change at any time')||msg.includes('Currently the require() provided to the main script embedded into single-executable applications only supports loading built-in modules.'))return;originalError(msg,...args);};";
+
+type JSONValue = string | number | boolean | { [x: string]: JSONValue } | Array<JSONValue>;
+type JSONObject = Record<string, JSONValue>;
 
 /**
- * Replace package:(name|version|author) with the value from the data object.
- * Example 1: "{package:name}" will be replaced with the name from the package.json file.
- * Example 2: "{package:author.name}" will be replaced with the author.name from the package.json file.
+ * Recursively replaces package:(name|version|author) with the value from the reference object.
+ * Example 1: "{package:name}" will be replaced with the `name` field from the package.json file.
+ * Example 2: "{package:author.name}" will be replaced with the `author`.`name` field from the package.json file.
  *
- * @param value string to parse
- * @param data object to use for replacement
- * @returns updated value
+ * @param data The object to operate over.
+ * @param reference The object to use for replacement.
+ * @returns The updated value (modified in-place).
  */
-function parseValue(value: string, data: any) {
-    // https://regex101.com/r/AvVwrD/3
-    const regex = /\{(package:(?<prop>[a-z]+)(\.(?<subprop>[a-z]+))?)\}/gi;
-    const match = regex.exec(value);
-    const { prop, subprop } = match?.groups || {};
-    if (prop && data[prop]) {
-        if (subprop && data[prop][subprop]) {
-            return value.replace(regex, data[prop][subprop]);
-        }
-        return value.replace(regex, data[prop]);
-    }
-    return value;
+function parseObject<T extends JSONObject, Reference extends JSONObject>(data: T, reference: Reference): T {
+	for (const [key, value] of Object.entries(data)) {
+		switch (typeof value) {
+			case 'string': {
+				// https://regex101.com/r/AvVwrD/3
+				const regex = /\{(package:(?<prop>[a-z]+)(\.(?<subProp>[a-z]+))?)\}/gi;
+				const match = regex.exec(value);
+				const { prop, subProp }: { prop?: keyof Reference; subProp?: keyof Reference[keyof Reference] } = match?.groups || {};
+
+				// Extract the property/sub-property
+				if (prop && reference[prop]) {
+					if (subProp && reference[prop][subProp])
+						data[key as keyof T] = value.replace(regex, reference[prop][subProp] as string) as T[keyof T];
+					else data[key as keyof T] = value.replace(regex, reference[prop] as string) as T[keyof T];
+				}
+				break;
+			}
+			case 'object': {
+				// Recurse if the value is another object
+				if (value && !Array.isArray(value)) data[key as keyof T] = parseObject(value, reference) as T[keyof T];
+				break;
+			}
+		}
+	}
+
+	return data;
 }
 
 /**
@@ -69,29 +84,15 @@ function parseValue(value: string, data: any) {
  * @returns A new options object with the tokens replaced.
  */
 export async function parseOptions(options: Options) {
-    const { properties, ...rest } = options;
+	try {
+		const packageJSONPath = path.resolve(process.cwd(), 'package.json');
+		const packageJSON = JSON.parse(await fs.readFile(packageJSONPath, 'utf8'));
 
-    try {
-        const packageJsonPath = path.resolve(process.cwd(), 'package.json');
-        const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
+		// Parse object modified options in-place
+		parseObject(options as unknown as JSONObject, packageJSON);
+	} catch (_err) {
+		// If the package.json cannot be loaded, return the original options
+	}
 
-        const newOptions: { [key: string]: any } = {
-            properties: {}
-        };
-        // eslint-disable-next-line guard-for-in
-        for (const key in rest) {
-            const isStr = typeof rest[key] === 'string';
-            newOptions[key] = isStr ? parseValue(rest[key], packageJson) : rest[key];
-        }
-        // eslint-disable-next-line guard-for-in
-        for (const key in properties) {
-            const isStr = typeof properties[key] === 'string';
-            newOptions.properties[key] = isStr ? parseValue(properties[key], packageJson) : properties[key];
-        }
-        return newOptions;
-    } catch (err) {
-        // If the package.json file is not found, return the original options
-    }
-
-    return options;
+	return options;
 }
