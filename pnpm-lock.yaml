@@ -24,6 +24,9 @@ importers:
       '@angablue/biome-config':
         specifier: ^1.0.1
         version: 1.0.1(@biomejs/biome@1.9.4)
+      '@biomejs/biome':
+        specifier: ^1.9.4
+        version: 1.9.4
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.2
