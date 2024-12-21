@@ -18,7 +18,12 @@
 		"type": "git",
 		"url": "git+https://github.com/AngaBlue/exe.git"
 	},
-	"keywords": ["exe", "windows", "build", "binary"],
+	"keywords": [
+		"exe",
+		"windows",
+		"build",
+		"binary"
+	],
 	"author": {
 		"name": "AngaBlue",
 		"email": "contact@anga.blue"
@@ -29,16 +34,16 @@
 	},
 	"homepage": "https://github.com/AngaBlue/exe#readme",
 	"devDependencies": {
-		"@angablue/biome-config": "^1.0.0",
-		"@types/node": "^20.14.12",
+		"@angablue/biome-config": "^1.0.1",
+		"@types/node": "^22.10.2",
 		"rimraf": "^6.0.1",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.5.4"
+		"typescript": "^5.7.2"
 	},
 	"dependencies": {
-		"@vercel/ncc": "^0.38.1",
+		"@vercel/ncc": "^0.38.3",
 		"postject": "1.0.0-alpha.6",
-		"resedit": "^2.0.2",
+		"resedit": "^2.0.3",
 		"signtool": "^1.0.0"
 	},
 	"engines": {
