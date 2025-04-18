@@ -1,7 +1,7 @@
 {
 	"name": "@angablue/exe",
 	"version": "3.2.4",
-	"description": "Build a portable binary for Windows systems using Vercel's pkg",
+	"description": "Build a portable binary for Windows systems using Node's SEA.",
 	"main": "dist/index.js",
 	"bin": {
 		"exe": "dist/cli.js"
