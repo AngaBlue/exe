@@ -1,13 +1,13 @@
 <h1 align="center">Node.js Windows Executable</h1>
 <p align="center">
   <a href="https://www.npmjs.com/package/@angablue/exe" target="_blank">
-    <img alt="Downloads" src="https://img.shields.io/npm/dm/@angablue/exe.svg?color=blue">
+    <img alt="Downloads" src="https://img.shields.io/npm/dm/@angablue/exe.svg?color=blue&label=Downloads">
   </a>
   <a href="https://www.npmjs.com/package/@angablue/exe" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/@angablue/exe.svg">
+    <img alt="Version" src="https://img.shields.io/npm/v/@angablue/exe.svg?label=Version">
   </a>
   <a href="https://github.com/AngaBlue/exe/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/npm/l/@angablue/exe?color=green" />
+    <img alt="Licence: MIT" src="https://img.shields.io/npm/l/@angablue/exe?color=green&label=Licence" />
   </a>
 </p>
 
