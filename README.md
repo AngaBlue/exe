@@ -1,10 +1,13 @@
 <h1 align="center">Node.js Windows Executable</h1>
 <p align="center">
-    <a href="https://www.npmjs.com/package/@angablue/exe" target="_blank">
-  <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/AngaBlue/exe?label=Version">
+  <a href="https://www.npmjs.com/package/@angablue/exe" target="_blank">
+    <img alt="Downloads" src="https://img.shields.io/npm/dm/@angablue/exe.svg?color=blue">
   </a>
-  <a href="https://github.com/AngaBlue/exe/blob/main/LICENSE" target="_blank">
-    <img alt="License: LGPL--3.0--or--later" src="https://img.shields.io/github/license/AngaBlue/exe?color=green" />
+  <a href="https://www.npmjs.com/package/@angablue/exe" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/@angablue/exe.svg">
+  </a>
+  <a href="https://github.com/AngaBlue/exe/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/npm/l/@angablue/exe?color=green" />
   </a>
 </p>
 
@@ -134,4 +137,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © [AngaBlue](https://github.com/AngaBlue).<br />
-This project is [LGPL--3.0--or--later](https://github.com/AngaBlue/exe/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/AngaBlue/exe/blob/main/LICENSE) licensed.

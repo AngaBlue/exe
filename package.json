@@ -18,17 +18,13 @@
 		"type": "git",
 		"url": "git+https://github.com/AngaBlue/exe.git"
 	},
-	"keywords": [
-		"exe",
-		"windows",
-		"build",
-		"binary"
-	],
+	"keywords": ["exe", "windows", "build", "binary"],
 	"author": {
 		"name": "AngaBlue",
-		"email": "contact@anga.blue"
+		"email": "contact@anga.blue",
+		"url": "https://anga.blue"
 	},
-	"license": "LGPL-3.0-or-later",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/AngaBlue/exe/issues"
 	},
@@ -51,8 +47,6 @@
 		"node": ">=20.0.0"
 	},
 	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@biomejs/biome"
-		]
+		"onlyBuiltDependencies": ["@biomejs/biome"]
 	}
 }
