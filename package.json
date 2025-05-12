@@ -1,6 +1,6 @@
 {
 	"name": "@angablue/exe",
-	"version": "3.2.4",
+	"version": "3.2.5",
 	"description": "Build a portable binary for Windows systems using Node's SEA.",
 	"main": "dist/index.js",
 	"bin": {
@@ -18,7 +18,12 @@
 		"type": "git",
 		"url": "git+https://github.com/AngaBlue/exe.git"
 	},
-	"keywords": ["exe", "windows", "build", "binary"],
+	"keywords": [
+		"exe",
+		"windows",
+		"build",
+		"binary"
+	],
 	"author": {
 		"name": "AngaBlue",
 		"email": "contact@anga.blue",
@@ -47,6 +52,8 @@
 		"node": ">=20.0.0"
 	},
 	"pnpm": {
-		"onlyBuiltDependencies": ["@biomejs/biome"]
+		"onlyBuiltDependencies": [
+			"@biomejs/biome"
+		]
 	}
 }
