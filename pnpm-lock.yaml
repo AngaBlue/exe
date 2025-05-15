@@ -22,28 +22,28 @@ importers:
         version: 1.0.0
     devDependencies:
       '@angablue/biome-config':
-        specifier: ^1.0.4
-        version: 1.0.4(@biomejs/biome@1.9.4)
+        specifier: ^1.0.5
+        version: 1.0.5(@biomejs/biome@1.9.4)
       '@biomejs/biome':
         specifier: ^1.9.4
         version: 1.9.4
       '@types/node':
-        specifier: ^22.15.17
-        version: 22.15.17
+        specifier: ^22.15.18
+        version: 22.15.18
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.15.17)(typescript@5.8.3)
+        version: 10.9.2(@types/node@22.15.18)(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
 
 packages:
 
-  '@angablue/biome-config@1.0.4':
-    resolution: {integrity: sha512-tlBo7gxbBnGwHW8sQiN1O+hXajKxeVZ9wxq3x93D0qclLYI1XDVpVrz9USun25MO62fzrKhWJ0YRAyWBciY21Q==}
+  '@angablue/biome-config@1.0.5':
+    resolution: {integrity: sha512-2+HfRAt53GthUVCaos5sqbvuBIoWJXyFF8+rA1w4p0K56KLb5Ae7V1+HiAjC9cXwZVxjSS3ynJ9gdzWfHfU0Aw==}
     peerDependencies:
       '@biomejs/biome': ^1.9.4
 
@@ -130,8 +130,8 @@ packages:
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
 
-  '@types/node@22.15.17':
-    resolution: {integrity: sha512-wIX2aSZL5FE+MR0JlvF87BNVrtFWf6AE6rxSE9X7OwnVvoyCQjpzSRJ+M87se/4QCkCiebQAqrJ0y6fwIyi7nw==}
+  '@types/node@22.15.18':
+    resolution: {integrity: sha512-v1DKRfUdyW+jJhZNEI1PYy29S2YRxMV5AOO/x/SjKmW0acCIOqmbj6Haf9eHAhsPmrhlHSxEhv/1WszcLWV4cg==}
 
   '@vercel/ncc@0.38.3':
     resolution: {integrity: sha512-rnK6hJBS6mwc+Bkab+PGPs9OiS0i/3kdTO+CkI8V0/VrW3vmz7O2Pxjw/owOlmo6PKEIxRSeZKv/kuL9itnpYA==}
@@ -341,7 +341,7 @@ packages:
 
 snapshots:
 
-  '@angablue/biome-config@1.0.4(@biomejs/biome@1.9.4)':
+  '@angablue/biome-config@1.0.5(@biomejs/biome@1.9.4)':
     dependencies:
       '@biomejs/biome': 1.9.4
 
@@ -410,7 +410,7 @@ snapshots:
 
   '@tsconfig/node16@1.0.4': {}
 
-  '@types/node@22.15.17':
+  '@types/node@22.15.18':
     dependencies:
       undici-types: 6.21.0
 
@@ -550,14 +550,14 @@ snapshots:
     dependencies:
       ansi-regex: 6.1.0
 
-  ts-node@10.9.2(@types/node@22.15.17)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.15.18)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.15.17
+      '@types/node': 22.15.18
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
